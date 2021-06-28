@@ -2,7 +2,7 @@ package model;
 
 public class BoardBean {
 	private int num;
-	private String write;
+	private String writer;
 	private String email;
 	private String subject;
 	private String password;
@@ -12,7 +12,7 @@ public class BoardBean {
 	private int re_level;
 	private int readcount;
 	private String content;
-
+	
 	
 	public int getNum() {
 		return num;
@@ -20,11 +20,11 @@ public class BoardBean {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public String getWrite() {
-		return write;
+	public String getWriter() {
+		return writer;
 	}
-	public void setWrite(String write) {
-		this.write = write;
+	public void setWriter(String writer) {
+		this.writer = writer;
 	}
 	public String getEmail() {
 		return email;
@@ -80,4 +80,5 @@ public class BoardBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
 }

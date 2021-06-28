@@ -46,7 +46,7 @@ public class BoardDAO {
 		}
 	}
 	
-		// 하나의 새로운 게시글이 넘어와서 저장되는 메소드
+		// 하나의 새로운 게시글이 넘어와서 DB에 저장되는 메소드
 	public void insertBoard(BoardBean bean) {
 		getCon();
 		// 빈 클래스에 넘어오지 않았던 데이터들을 초기화 해주어야 한다
@@ -68,7 +68,7 @@ public class BoardDAO {
 			pstmt=conn.prepareStatement(sql);
 			
 			// ?의 값을 맵핑
-			pstmt.setString(1, bean.getWrite());
+			pstmt.setString(1, bean.getWriter());
 			pstmt.setString(2, bean.getEmail());
 			pstmt.setString(3, bean.getSubject());
 			pstmt.setString(4, bean.getPassword());
@@ -109,7 +109,7 @@ public class BoardDAO {
 			while(rs.next()) {
 				BoardBean bean=new BoardBean();
 				bean.setNum(rs.getInt(1));
-				bean.setWrite(rs.getString(2));
+				bean.setWriter(rs.getString(2));
 				bean.setEmail(rs.getString(3));
 				bean.setSubject(rs.getString(4));
 				bean.setPassword(rs.getString(5));
@@ -155,7 +155,7 @@ public class BoardDAO {
 			
 			if(rs.next()) {
 				bean.setNum(rs.getInt(1));
-				bean.setWrite(rs.getString(2));
+				bean.setWriter(rs.getString(2));
 				bean.setEmail(rs.getString(3));
 				bean.setSubject(rs.getString(4));
 				bean.setPassword(rs.getString(5));
@@ -198,7 +198,7 @@ public class BoardDAO {
 			String sql="insert into board values(board_seq.nextval,?,?,?,?,sysdate,?,?,?,0,?)";
 			pstmt=conn.prepareStatement(sql);
 			// ?에 값을 대입
-			pstmt.setString(1, bean.getWrite());
+			pstmt.setString(1, bean.getWriter());
 			pstmt.setString(2, bean.getEmail());
 			pstmt.setString(3, bean.getSubject());
 			pstmt.setString(4, bean.getPassword());
@@ -234,7 +234,7 @@ public class BoardDAO {
 				
 				if(rs.next()) {
 					bean.setNum(rs.getInt(1));
-					bean.setWrite(rs.getString(2));
+					bean.setWriter(rs.getString(2));
 					bean.setEmail(rs.getString(3));
 					bean.setSubject(rs.getString(4));
 					bean.setPassword(rs.getString(5));
