@@ -39,7 +39,7 @@
 		// 최신글 10개를 기준으로 게시글을 리턴 받아주는 메소드 호출
 		Vector<BoardBean> vc=bdao.getAllBoard(startRow, endRow);
 		
-		// 테이블에 표시할 번호 지정
+		// 테이블에 표시할 번호 지정.
 		number=count-(currentPage-1)*pageSize;
 		
 	%>
