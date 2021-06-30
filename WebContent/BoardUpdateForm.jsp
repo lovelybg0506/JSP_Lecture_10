@@ -12,7 +12,7 @@
 <div align="center">
 	<h2>게시글 수정</h2>
 <%
-	int num = Integer.parseInt(request.getParameter("num").trim());
+	int num = Integer.parseInt(request.getParameter("num").trim()); // trim() : 공백제거
 	
 	BoardDAO bdao = new BoardDAO();
 	BoardBean bean = bdao.getOneUpdateBoard(num);

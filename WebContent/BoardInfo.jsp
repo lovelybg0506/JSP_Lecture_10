@@ -10,7 +10,7 @@
 </head>
 <body>
 <%
-	int num = Integer.parseInt(request.getParameter("num").trim()); // .trim() : 문자열에 공백이 있을 시, 공백을 제거해준다.
+	int num = Integer.parseInt(request.getParameter("num").trim());
 	
 	BoardDAO bdao = new BoardDAO();
 	BoardBean bean = bdao.getOneBoard(num);

@@ -19,9 +19,9 @@
 	BoardDAO bdao=new BoardDAO();
 
 	//해당 게시글의 패스워드 값을 얻어옴
-	String pass=bdao.getPass(boardbean.getNum());
+	String pass=bdao.getPass(boardbean.getNum()); // getPass로 보낸 새로 입력받은값
 	
-	if(pass.equals(boardbean.getPassword())){
+	if(pass.equals(boardbean.getPassword())){ // boardbean.getPassword() : 기존의 패스워드값
 		bdao.updateBoard(boardbean);
 		response.sendRedirect("BoardList.jsp");
 	}else{
