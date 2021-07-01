@@ -37,12 +37,122 @@
 		int endRow=currentPage*pageSize;
 		
 		// 최신글 10개를 기준으로 게시글을 리턴 받아주는 메소드 호출
-		Vector<BoardBean> vc=bdao.getAllBoard(startRow, endRow);
+		Vector<BoardBean> vec=bdao.getAllBoard(startRow, endRow);
 		
 		// 테이블에 표시할 번호 지정.
 		number=count-(currentPage-1)*pageSize;
 		
 	%>
+	
+	<table width="700" boarder="1" bgcolor="skyblue">
+		<tr height="40">
+			<td align="right" colspan="5">
+				<input type="button" value="글쓰기" onclick="location.href='BoardWriteForm.jsp">
+			</td>
+		</tr>
+		<tr height="40">
+			<td width="50" align="center">번호</td>
+			<td width="320" align="center">제목</td>
+			<td width="100" align="center">작성자</td>
+			<td width="150" align="center">작성일</td>
+			<td width="80" align="center">조회수</td>
+		</tr>
+		
+		<%
+			for(int i=0; i<vec.size(); i++){
+				BoardBean bean=vec.get(i);
+		%>
+			<tr height="40">
+				<td width="50" align="center"><%=number-- %></td>
+				<td width="320" align="left">
+					<a href="BoardInfo.jsp?num=<%=bean.getNum() %>" style="text-decoration:none">
+					
+					<%
+						if(bean.getRe_step() > 1){
+							for(int j=0; j<(bean.getRe_step()-1)*5; j++){
+					%>
+					&nbsp;
+					<%
+							}
+						
+						}
+					%>
+					<%=bean.getSubject() %>
+					</a>
+				</td>
+				<td width="100" align="center"><%=bean.getWriter() %></td>
+				<td width="150" align="center"><%=bean.getReg_date() %></td>
+				<td width="80" align="center"><%=bean.getReadcount() %></td>
+			</tr>
+		<%
+			}
+		%>
+	</table>
+	<br><br>
+	<!-- 페이지 카운터링 소스 -->
+	<%
+		if(count > 0){
+			// 카운터링 숫자를 얼마까지 
+			int pageCount=count/pageSize+(count%pageSize == 0? 0:1);
+			
+			// 시작 페이지 숫자를 설정
+			int startPage=1;
+			if(currentPage%10 != 0){
+				startPage=((int)(currentPage/10))*10+1;
+			}else{
+				startPage=((int)(currentPage/10)-1)*10+1;
+			}
+			
+			int pageBlock=10;
+			int endPage=startPage+pageBlock-1; // 화면에 보여질 페이지
+			
+			if(endPage > pageCount)
+				endPage=pageCount;
+			
+			// 이전이라는 링크를 만들건지 파악
+			if(startPage > 10){
+	%>
+			<a href="BoardList.jsp?pageNum=<%=startPage-10 %>">[이전]</a>
+	<%
+			}
+			// 페이징 처리
+			for(int i=startPage; i<=endPage; i++){
+	%>
+			<a href="BoardList.jsp?pageNum<%=i %>">[<%=i %>]</a>
+	<%
+			}
+			// 다음이라는 링크를 만들건지 파악
+			if(endPage < pageCount){
+	%>
+			<a href="BoardList.jsp?pageNum=<%=startPage+10 %>">[다음]</a>	
+	<%
+			}
+		}
+	%>			
 </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
