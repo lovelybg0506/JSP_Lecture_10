@@ -81,4 +81,9 @@ public class BoardBean {
 		this.content = content;
 	}
 	
+	
+	
+	
+	
+	
 }
