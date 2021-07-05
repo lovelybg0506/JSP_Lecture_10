@@ -88,6 +88,7 @@ public class BoardDAO {
 	
 	// 모든 게시글을 리턴해 주는 메서드
 	public Vector<BoardBean> getAllBoard(int start,int end){ // 이전 이후 카운터
+     //public Vector<BoardBean> getAllBoard() {
 		
 		// 리턴할 객체 선언
 		Vector<BoardBean> vec=new Vector<>();
@@ -97,11 +98,11 @@ public class BoardDAO {
 			// 쿼리 준비
 			String sql="select * from (select A.*,Rownum Rnum from(select * from board order by ref desc,re_step asc)A)"
 			            +"where Rnum >= ? and Rnum <= ?";
-			// String sql="select * from board order by ref desc,re_step asc";
+			 //String sql="select * from board order by ref desc,re_step asc";
 			// 쿼리 실행 객체
 			pstmt=conn.prepareStatement(sql);
-			//pstmt.setInt(1,start);
-			//pstmt.setInt(2,end); // 10개 기준
+			pstmt.setInt(1,start);
+			pstmt.setInt(2,end); // 10개 기준
 			
 			// 쿼리를 실행 후 결과를 저장
 			rs=pstmt.executeQuery();
@@ -356,18 +357,3 @@ public class BoardDAO {
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

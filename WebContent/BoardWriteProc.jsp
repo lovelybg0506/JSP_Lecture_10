@@ -21,7 +21,7 @@
 	bdao.insertBoard(boardBean);
 	
 	// 게시글 저장후 전체 게시글 보기
-	response.sendRedirect("BoardList_1.jsp");
+	response.sendRedirect("BoardList.jsp");
 %>
 </body>
 </html>

@@ -21,23 +21,24 @@
 		<table width="600" border="1" bordercolor="gray"  bgcolor="skyblue">
 			<tr height="40">
 				<td width="150" align="center">작성자</td>
-				<td width="450"><input type="text" name="writer" size="60"></td>
+				<td width="450"><input type="text" name="writer" size="60" required></td>
 			</tr>
 			<tr height="40">
 				<td width="150" align="center">제목</td>
-				<td width="450"><input type="text" name="subject" value="[답변]" size="60"></td>
+				<td width="450"><input type="text" name="subject" size="60" required>
+				</td>
 			</tr>
 			<tr height="40">
 				<td width="150" align="center">이메일</td>
-				<td width="450"><input type="email" name="email"  size="60"></td>
+				<td width="450"><input type="email" name="email"  size="60" required></td>
 			</tr>
 			<tr height="40">
 				<td width="150" align="center">비밀번호</td>
-				<td width="450"><input type="password" name="password"  size="60"></td>
+				<td width="450"><input type="password" name="password"  size="60" required></td>
 			</tr>
 			<tr height="40">
 				<td width="150" align="center">글내용</td>
-				<td width="450"><textarea rows="10" cols="60" name="content" ></textarea></td>
+				<td width="450"><textarea rows="10" cols="60" name="content" required></textarea></td>
 			</tr>
 			
 			<!--form에서 사용자로부터 입력받지 않고 데이터를 넘김-->
