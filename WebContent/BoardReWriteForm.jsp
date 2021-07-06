@@ -25,8 +25,8 @@
 			</tr>
 			<tr height="40">
 				<td width="150" align="center">제목</td>
-				<td width="450"><input type="text" name="subject" size="60" required>
-				</td>
+				 <td width="450"><input type="text" name="subject"  size="60" required></td> 
+				<!-- <td width="450"><input type="text" name="subject" value="[답변]" size="60"></td>  -->
 			</tr>
 			<tr height="40">
 				<td width="150" align="center">이메일</td>
@@ -49,7 +49,7 @@
 					<input type="hidden" name="re_level" value="<%=re_level %>">
 					<input type="submit" value="답글 쓰기 완료">&nbsp;&nbsp;
 					<input type="reset" value="취소">
-					<input type="button" onclick="location.href='BoardList.jsp:'" value="전체글보기">
+					<input type="button" onclick="location.href='BoardList.jsp'" value="전체글보기">
 				</td>
 			</tr>
 		</table>

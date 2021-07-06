@@ -88,7 +88,7 @@ public class BoardDAO {
 	
 	// 모든 게시글을 리턴해 주는 메서드
 	public Vector<BoardBean> getAllBoard(int start,int end){ // 이전 이후 카운터
-     //public Vector<BoardBean> getAllBoard() {
+    // public Vector<BoardBean> getAllBoard() {
 		
 		// 리턴할 객체 선언
 		Vector<BoardBean> vec=new Vector<>();
@@ -96,9 +96,14 @@ public class BoardDAO {
 		
 		try {
 			// 쿼리 준비
+			//  ref --- 1차 정렬
+			   //  re_step 2차 정렬  
+			
+			
 			String sql="select * from (select A.*,Rownum Rnum from(select * from board order by ref desc,re_step asc)A)"
 			            +"where Rnum >= ? and Rnum <= ?";
-			 //String sql="select * from board order by ref desc,re_step asc";
+			// String sql="select * from board order by ref desc,re_step asc";
+			
 			// 쿼리 실행 객체
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1,start);
@@ -120,7 +125,6 @@ public class BoardDAO {
 				bean.setRe_level(rs.getInt(9));
 				bean.setReadcount(rs.getInt(10));
 				bean.setContent(rs.getString(11));
-				
 				vec.add(bean); //패키징한 데이터를 벡터에 저장
 			}
 			conn.close();
@@ -186,12 +190,13 @@ public class BoardDAO {
 		
 		try {
 			// 핵심 코드
-			// 부모글 보다 큰 re_level의 값을 전부 1씩 증가시켜줌
-			String levelsql="update board set re_level=re_level+1 where ref=? and re_level > ?";
+			// 부모글 보다 큰 re_step의 값을 전부 1씩 증가시켜줌
+			// 기존 글변경
+			String levelsql="update board set re_step=re_step+1 where ref=? and re_step > ?";
 			// 쿼리 삽입 객체 선언
 			pstmt=conn.prepareStatement(levelsql);
 			pstmt.setInt(1,ref);
-			pstmt.setInt(2, re_level);
+			pstmt.setInt(2, re_step);
 			// 쿼리 실행
 			pstmt.executeUpdate();
 			// 답변글 데이터를 저장
@@ -206,7 +211,6 @@ public class BoardDAO {
 			pstmt.setInt(6, re_step+1); // 답글이기에 부모글 re_step에 1을 넣어줌
 			pstmt.setInt(7, re_level+1);
 			pstmt.setString(8, bean.getContent());
-			
 			// 쿼리를 실행
 			pstmt.executeUpdate();
 			conn.close();
@@ -357,3 +361,18 @@ public class BoardDAO {
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

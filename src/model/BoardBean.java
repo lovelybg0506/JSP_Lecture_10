@@ -13,6 +13,7 @@ public class BoardBean {
 	private int readcount;
 	private String content;
 	
+	
 	public int getNum() {
 		return num;
 	}
@@ -79,6 +80,10 @@ public class BoardBean {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
+	
+	
+	
 	
 	
 }

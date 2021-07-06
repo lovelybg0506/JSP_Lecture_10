@@ -9,10 +9,10 @@
 </head>
 <body>
 <%
-	request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("UTF-8");
 %>
 
-<!-- 데이터를 한번에 받아오는 빈클래스 사용 -->
+<!-- 데이터를 한번에 받아오는 빈클래스사용  -->
 <jsp:useBean id="boardbean" class="model.BoardBean">
 	<jsp:setProperty name="boardbean" property="*"/>
 </jsp:useBean>
